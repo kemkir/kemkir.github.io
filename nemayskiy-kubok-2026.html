@@ -367,6 +367,260 @@
         .free-badge {
             background: rgba(255, 255, 255, 0.15);
         }
+
+        /* Countdown timer */
+        .countdown-section {
+            background: linear-gradient(135deg, rgba(241, 196, 15, 0.2), rgba(243, 156, 18, 0.1));
+            border: 1px solid rgba(243, 156, 18, 0.3);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .countdown-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #f39c12;
+        }
+
+        .countdown-label {
+            font-size: 0.75rem;
+            color: #8892b0;
+            margin-top: 4px;
+        }
+
+        /* Legend */
+        .legend-section {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 24px;
+        }
+
+        .legend-title {
+            font-size: 0.85rem;
+            color: #8892b0;
+            margin-bottom: 12px;
+        }
+
+        .legend-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.75rem;
+            color: #ccd6f6;
+        }
+
+        .legend-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+
+        /* Collapsible rules */
+        .rules-toggle {
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .rules-toggle::after {
+            content: '▼';
+            font-size: 0.7rem;
+            transition: transform 0.3s ease;
+        }
+
+        .rules-toggle.collapsed::after {
+            transform: rotate(-90deg);
+        }
+
+        .rules-content {
+            max-height: 2000px;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .rules-content.collapsed {
+            max-height: 0;
+        }
+
+        /* History */
+        .history-section {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 24px;
+        }
+
+        .history-title {
+            font-size: 0.85rem;
+            color: #8892b0;
+            margin-bottom: 12px;
+        }
+
+        .history-item {
+            padding: 8px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            font-size: 0.75rem;
+            color: #ccd6f6;
+        }
+
+        .history-item:last-child {
+            border-bottom: none;
+        }
+
+        .history-date {
+            color: #8892b0;
+            margin-right: 8px;
+        }
+
+        /* Month modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+        }
+
+        .modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-radius: 16px;
+            padding: 24px;
+            max-width: 500px;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #8892b0;
+            background: none;
+            border: none;
+            width: 32px;
+            height: 32px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .modal-title {
+            font-size: 1.2rem;
+            margin-bottom: 16px;
+            color: #3498db;
+        }
+
+        .modal-participant {
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            margin-bottom: 8px;
+        }
+
+        .modal-participant-name {
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .modal-participant-points {
+            font-size: 0.85rem;
+            color: #8892b0;
+        }
+
+        /* Clickable months */
+        .month-cell.clickable {
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .month-cell.clickable:hover {
+            background: rgba(52, 152, 219, 0.2);
+            transform: scale(1.05);
+        }
+
+        /* Progress chart */
+        .chart-section {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+
+        .chart-title {
+            font-size: 0.85rem;
+            color: #8892b0;
+            margin-bottom: 16px;
+        }
+
+        .chart-container {
+            display: flex;
+            align-items: flex-end;
+            gap: 8px;
+            height: 150px;
+            padding: 16px 0;
+        }
+
+        .chart-bar {
+            flex: 1;
+            background: linear-gradient(to top, #3498db, #9b59b6);
+            border-radius: 4px 4px 0 0;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-end;
+            min-height: 20px;
+        }
+
+        .chart-bar-label {
+            position: absolute;
+            bottom: -24px;
+            font-size: 0.7rem;
+            color: #8892b0;
+            white-space: nowrap;
+        }
+
+        .chart-bar-value {
+            position: absolute;
+            top: -20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #3498db;
+        }
     </style>
 </head>
 <body>
@@ -399,6 +653,41 @@
                 <span class="prize-place">🥇 50%</span>
                 <span class="prize-place">🥈 30%</span>
                 <span class="prize-place">🥉 20%</span>
+            </div>
+        </div>
+
+        <div class="countdown-section">
+            <div class="countdown-value" id="countdown">Загрузка...</div>
+            <div class="countdown-label">до конца месяца (контроль 28-31 января)</div>
+        </div>
+
+        <div class="legend-section">
+            <div class="legend-title">📖 Обозначения</div>
+            <div class="legend-grid">
+                <div class="legend-item">
+                    <div class="legend-icon" style="background: linear-gradient(90deg, #27ae60, #2ecc71); font-size: 0.7rem;">💰</div>
+                    <span>Платный участник</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-icon" style="background: rgba(52, 152, 219, 0.3); font-size: 0.6rem;">основная</div>
+                    <span>10 баллов/мес</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-icon" style="background: rgba(155, 89, 182, 0.25); font-size: 0.6rem;">доп.</div>
+                    <span>3 балла/мес</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-icon" style="color: #8892b0;">А</div>
+                    <span>Похудение</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-icon" style="color: #8892b0;">Б</div>
+                    <span>Рекомпозиция</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-icon" style="color: #8892b0;">В</div>
+                    <span>Активность</span>
+                </div>
             </div>
         </div>
 
@@ -530,9 +819,27 @@
             </div>
         </div>
 
-        <div class="section-title">📅 Баллы по месяцам</div>
+        <div class="chart-section">
+            <div class="chart-title">📊 Прогресс участников (% от цели)</div>
+            <div class="chart-container">
+                <div class="chart-bar" style="height: 5%;">
+                    <div class="chart-bar-value">0%</div>
+                    <div class="chart-bar-label">Кирилл</div>
+                </div>
+                <div class="chart-bar" style="height: 5%;">
+                    <div class="chart-bar-value">0%</div>
+                    <div class="chart-bar-label">Кабачок</div>
+                </div>
+                <div class="chart-bar" style="height: 5%;">
+                    <div class="chart-bar-value">0%</div>
+                    <div class="chart-bar-label">Пикассо</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-title">📅 Баллы по месяцам (кликните для деталей)</div>
         <div class="month-grid">
-            <div class="month-cell current">
+            <div class="month-cell current clickable" data-month="Январь 2026">
                 <div class="month-name">янв</div>
                 <div class="month-points">—</div>
             </div>
@@ -582,9 +889,22 @@
             </div>
         </div>
 
-        <div class="rules-section">
-            <h2>📋 Правила турнира</h2>
+        <div class="history-section">
+            <div class="history-title">📜 История обновлений</div>
+            <div class="history-item">
+                <span class="history-date">12 января 2026</span>
+                Добавлен участник Пикассо (90→80 кг, кат. А, без призовых)
+            </div>
+            <div class="history-item">
+                <span class="history-date">12 января 2026</span>
+                Опубликованы правила турнира и запущена регистрация
+            </div>
+        </div>
 
+        <div class="rules-section">
+            <h2 class="rules-toggle">📋 Правила турнира</h2>
+
+            <div class="rules-content">
             <p>Три дисциплины, контроль раз в месяц 28-31 числа.<br>
             <strong>Основная дисциплина</strong> - максимум 10 баллов/мес.<br>
             <strong>Дополнительная</strong> (по желанию) - максимум 3 балла/мес.<br>
@@ -629,6 +949,19 @@
             Бесплатные соревнуются за честь, славу и кубок.</p>
 
             <p><strong>Регистрация до 31 января 2026</strong></p>
+            </div>
+        </div>
+
+        <div id="monthModal" class="modal">
+            <div class="modal-content">
+                <button class="modal-close" onclick="closeModal()">&times;</button>
+                <h2 class="modal-title" id="modalTitle">Январь 2026</h2>
+                <div id="modalContent">
+                    <p style="color: #8892b0; font-size: 0.85rem; text-align: center; padding: 20px;">
+                        Месяц ещё не завершён. Результаты появятся после контроля 28-31 числа.
+                    </p>
+                </div>
+            </div>
         </div>
 
         <div class="footer">
@@ -636,5 +969,102 @@
             Регистрация до 31 января • Первый контроль: 28-31 января
         </div>
     </div>
+
+    <script>
+        // Countdown timer
+        function updateCountdown() {
+            const now = new Date();
+            const currentYear = now.getFullYear();
+            const currentMonth = now.getMonth(); // 0-11
+
+            // Calculate end of current month (28-31)
+            const endOfMonth = new Date(currentYear, currentMonth + 1, 0).getDate(); // Last day of month
+            const controlStart = new Date(currentYear, currentMonth, 28);
+            const monthEnd = new Date(currentYear, currentMonth, endOfMonth, 23, 59, 59);
+
+            let targetDate;
+            if (now >= controlStart) {
+                // We're in control period, show days until end of month
+                targetDate = monthEnd;
+            } else {
+                // Show days until control starts
+                targetDate = controlStart;
+            }
+
+            const diff = targetDate - now;
+            const days = Math.ceil(diff / (1000 * 60 * 60 * 24));
+
+            const countdownEl = document.getElementById('countdown');
+            if (days > 0) {
+                countdownEl.textContent = `${days} ${days === 1 ? 'день' : days < 5 ? 'дня' : 'дней'}`;
+            } else if (days === 0) {
+                countdownEl.textContent = 'Сегодня!';
+            } else {
+                countdownEl.textContent = 'Период контроля';
+            }
+        }
+
+        // Collapsible rules
+        function toggleRules() {
+            const toggle = document.querySelector('.rules-toggle');
+            const content = document.querySelector('.rules-content');
+
+            toggle.classList.toggle('collapsed');
+            content.classList.toggle('collapsed');
+        }
+
+        // Month modal
+        function openMonthModal(monthName) {
+            const modal = document.getElementById('monthModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalContent = document.getElementById('modalContent');
+
+            modalTitle.textContent = monthName;
+
+            // For now, show placeholder. In future, this can be populated with actual data
+            modalContent.innerHTML = `
+                <p style="color: #8892b0; font-size: 0.85rem; text-align: center; padding: 20px;">
+                    Месяц ещё не завершён. Результаты появятся после контроля 28-31 числа.
+                </p>
+            `;
+
+            modal.classList.add('active');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('monthModal');
+            modal.classList.remove('active');
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            // Update countdown
+            updateCountdown();
+            setInterval(updateCountdown, 60000); // Update every minute
+
+            // Setup rules toggle
+            const rulesToggle = document.querySelector('.rules-toggle');
+            if (rulesToggle) {
+                rulesToggle.addEventListener('click', toggleRules);
+            }
+
+            // Setup month cells
+            const monthCells = document.querySelectorAll('.month-cell.clickable');
+            monthCells.forEach(cell => {
+                cell.addEventListener('click', function() {
+                    const monthName = this.dataset.month;
+                    openMonthModal(monthName);
+                });
+            });
+
+            // Close modal on background click
+            const modal = document.getElementById('monthModal');
+            modal.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    closeModal();
+                }
+            });
+        });
+    </script>
 </body>
 </html>
