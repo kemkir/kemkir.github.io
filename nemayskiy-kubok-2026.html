@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Немайский кубок 2026</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            padding: 16px;
+            color: #fff;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 24px;
+        }
+
+        .header h1 {
+            font-size: 1.6rem;
+            margin-bottom: 4px;
+            background: linear-gradient(90deg, #3498db, #9b59b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .header .subtitle {
+            font-size: 0.85rem;
+            color: #8892b0;
+        }
+
+        .trophy {
+            font-size: 2.5rem;
+            margin-bottom: 8px;
+        }
+
+        .leaderboard {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+
+        .participant {
+            padding: 16px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .participant:last-child {
+            border-bottom: none;
+        }
+
+        .participant-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .rank {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+            flex-shrink: 0;
+        }
+
+        .rank-1 { background: linear-gradient(135deg, #f39c12, #f1c40f); color: #1a1a2e; }
+        .rank-2 { background: linear-gradient(135deg, #95a5a6, #bdc3c7); color: #1a1a2e; }
+        .rank-3 { background: linear-gradient(135deg, #cd6133, #e17055); color: #1a1a2e; }
+        .rank-other { background: rgba(255, 255, 255, 0.1); }
+
+        .participant-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+            flex: 1;
+        }
+
+        .badge {
+            font-size: 0.7rem;
+            padding: 3px 8px;
+            border-radius: 4px;
+            margin-left: 8px;
+        }
+
+        .paid-badge {
+            background: linear-gradient(90deg, #27ae60, #2ecc71);
+        }
+
+        .participant-points {
+            text-align: right;
+        }
+
+        .points-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #3498db;
+        }
+
+        .points-label {
+            font-size: 0.7rem;
+            color: #8892b0;
+        }
+
+        .goals-container {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .goal-row {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            padding: 10px 12px;
+        }
+
+        .goal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+
+        .goal-type {
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        .goal-main { background: rgba(52, 152, 219, 0.3); }
+        .goal-extra { background: rgba(155, 89, 182, 0.25); font-weight: 400; }
+
+        .goal-category {
+            font-size: 0.7rem;
+            color: #8892b0;
+        }
+
+        .goal-text {
+            font-size: 0.85rem;
+            color: #fff;
+            margin-bottom: 8px;
+        }
+
+        .progress-bar {
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 3px;
+            transition: width 0.3s ease;
+        }
+
+        .progress-main { background: linear-gradient(90deg, #3498db, #2980b9); }
+        .progress-extra { background: linear-gradient(90deg, #9b59b6, #8e44ad); }
+
+        .progress-text {
+            font-size: 0.7rem;
+            color: #8892b0;
+            margin-top: 4px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .month-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 4px;
+            margin-top: 16px;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+        }
+
+        .month-cell {
+            text-align: center;
+            padding: 8px 4px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            font-size: 0.7rem;
+        }
+
+        .month-cell.current {
+            background: rgba(52, 152, 219, 0.2);
+            border: 1px solid rgba(52, 152, 219, 0.5);
+        }
+
+        .month-name {
+            color: #8892b0;
+            margin-bottom: 4px;
+        }
+
+        .month-points {
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .section-title {
+            font-size: 0.85rem;
+            color: #8892b0;
+            margin-bottom: 12px;
+            padding-left: 4px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 16px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #3498db;
+        }
+
+        .stat-label {
+            font-size: 0.7rem;
+            color: #8892b0;
+            margin-top: 4px;
+        }
+
+        .pending-section {
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 24px;
+        }
+
+        .pending-title {
+            font-size: 0.8rem;
+            color: #8892b0;
+            margin-bottom: 12px;
+        }
+
+        .pending-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .pending-chip {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 0.8rem;
+            color: #bbb;
+        }
+
+        .pending-chip .hint {
+            color: #666;
+            font-size: 0.7rem;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 16px;
+            color: #8892b0;
+            font-size: 0.75rem;
+        }
+
+        .prize-pool {
+            background: linear-gradient(135deg, rgba(39, 174, 96, 0.2), rgba(46, 204, 113, 0.1));
+            border: 1px solid rgba(46, 204, 113, 0.3);
+            border-radius: 12px;
+            padding: 16px;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        .prize-pool-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2ecc71;
+        }
+
+        .prize-pool-label {
+            font-size: 0.75rem;
+            color: #8892b0;
+            margin-top: 4px;
+        }
+
+        .prize-distribution {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 12px;
+            font-size: 0.75rem;
+            color: #8892b0;
+        }
+
+        .prize-place {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="trophy">🏆</div>
+            <h1>Немайский кубок</h1>
+            <div class="subtitle">Сезон 2026 • Январь</div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-value">2</div>
+                <div class="stat-label">участников</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">1</div>
+                <div class="stat-label">платных</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-value">0</div>
+                <div class="stat-label">баллов</div>
+            </div>
+        </div>
+
+        <div class="prize-pool">
+            <div class="prize-pool-value">500 ₽</div>
+            <div class="prize-pool-label">призовой фонд • январь</div>
+            <div class="prize-distribution">
+                <span class="prize-place">🥇 50%</span>
+                <span class="prize-place">🥈 30%</span>
+                <span class="prize-place">🥉 20%</span>
+            </div>
+        </div>
+
+        <div class="section-title">🏅 Турнирная таблица</div>
+        <div class="leaderboard">
+            <div class="participant">
+                <div class="participant-header">
+                    <div class="rank rank-1">1</div>
+                    <div class="participant-name">
+                        Кирилл
+                        <span class="badge paid-badge">💰</span>
+                    </div>
+                    <div class="participant-points">
+                        <div class="points-value">0</div>
+                        <div class="points-label">баллов</div>
+                    </div>
+                </div>
+                <div class="goals-container">
+                    <div class="goal-row">
+                        <div class="goal-header">
+                            <span class="goal-type goal-main">основная</span>
+                            <span class="goal-category">А. Похудение</span>
+                        </div>
+                        <div class="goal-text">104.4 → 80 кг</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill progress-main" style="width: 0%"></div>
+                        </div>
+                        <div class="progress-text">
+                            <span>0%</span>
+                            <span>осталось 24.4 кг</span>
+                        </div>
+                    </div>
+                    <div class="goal-row">
+                        <div class="goal-header">
+                            <span class="goal-type goal-extra">доп.</span>
+                            <span class="goal-category">Б3. Спорт</span>
+                        </div>
+                        <div class="goal-text">4 → 8 ч/мес</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill progress-extra" style="width: 0%"></div>
+                        </div>
+                        <div class="progress-text">
+                            <span>0%</span>
+                            <span>+4 часа</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="participant">
+                <div class="participant-header">
+                    <div class="rank rank-2">2</div>
+                    <div class="participant-name">Кабачок</div>
+                    <div class="participant-points">
+                        <div class="points-value">0</div>
+                        <div class="points-label">баллов</div>
+                    </div>
+                </div>
+                <div class="goals-container">
+                    <div class="goal-row">
+                        <div class="goal-header">
+                            <span class="goal-type goal-main">основная</span>
+                            <span class="goal-category">А. Похудение</span>
+                        </div>
+                        <div class="goal-text">81 → ? кг</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill progress-main" style="width: 0%"></div>
+                        </div>
+                        <div class="progress-text">
+                            <span>0%</span>
+                            <span>уточняет цель</span>
+                        </div>
+                    </div>
+                    <div class="goal-row">
+                        <div class="goal-header">
+                            <span class="goal-type goal-extra">доп.</span>
+                            <span class="goal-category">Б2. Фото</span>
+                        </div>
+                        <div class="goal-text">голосование в чате</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill progress-extra" style="width: 0%"></div>
+                        </div>
+                        <div class="progress-text">
+                            <span>0/10</span>
+                            <span>макс 3 балла</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pending-section">
+            <div class="pending-title">⏳ Ждём подтверждения</div>
+            <div class="pending-list">
+                <div class="pending-chip">Марина <span class="hint">Б3</span></div>
+                <div class="pending-chip">Elena <span class="hint">А</span></div>
+                <div class="pending-chip">Алина <span class="hint">А</span></div>
+                <div class="pending-chip">Роман <span class="hint">А</span></div>
+                <div class="pending-chip">Татьяна</div>
+                <div class="pending-chip">Настя</div>
+                <div class="pending-chip">Пикассо</div>
+                <div class="pending-chip">Овсянка</div>
+            </div>
+        </div>
+
+        <div class="section-title">📅 Баллы по месяцам</div>
+        <div class="month-grid">
+            <div class="month-cell current">
+                <div class="month-name">янв</div>
+                <div class="month-points">—</div>
+            </div>
+            <div class="month-cell">
+                <div class="month-name">фев</div>
+                <div class="month-points">—</div>
+            </div>
+            <div class="month-cell">
+                <div class="month-name">мар</div>
+                <div class="month-points">—</div>
+            </div>
+            <div class="month-cell">
+                <div class="month-name">апр</div>
+                <div class="month-points">—</div>
+            </div>
+            <div class="month-cell">
+                <div class="month-name">май</div>
+                <div class="month-points">—</div>
+            </div>
+            <div class="month-cell">
+                <div class="month-name">июн</div>
+                <div class="month-points">—</div>
+            </div>
+            <div class="month-cell">
+                <div class="month-name">июл</div>
+                <div class="month-points">—</div>
+            </div>
+            <div class="month-cell">
+                <div class="month-name">авг</div>
+                <div class="month-points">—</div>
+            </div>
+            <div class="month-cell">
+                <div class="month-name">сен</div>
+                <div class="month-points">—</div>
+            </div>
+            <div class="month-cell">
+                <div class="month-name">окт</div>
+                <div class="month-points">—</div>
+            </div>
+            <div class="month-cell">
+                <div class="month-name">ноя</div>
+                <div class="month-points">—</div>
+            </div>
+            <div class="month-cell">
+                <div class="month-name">дек</div>
+                <div class="month-points">—</div>
+            </div>
+        </div>
+
+        <div class="footer">
+            Обновлено: 12 января 2026<br>
+            Регистрация до 31 января • Первый контроль: 28-31 января
+        </div>
+    </div>
+</body>
+</html>
