@@ -621,6 +621,228 @@
             font-weight: 700;
             color: #3498db;
         }
+
+        /* Mobile optimizations */
+        @media (max-width: 768px) {
+            body {
+                padding: 12px;
+            }
+
+            .container {
+                max-width: 100%;
+            }
+
+            /* Countdown */
+            .countdown-value {
+                font-size: 1.3rem;
+            }
+
+            .countdown-label {
+                font-size: 0.7rem;
+            }
+
+            /* Legend - smaller minwidth */
+            .legend-grid {
+                grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+                gap: 8px;
+            }
+
+            .legend-item {
+                font-size: 0.7rem;
+            }
+
+            /* Stats grid - reduce font sizes */
+            .stat-value {
+                font-size: 1.2rem;
+            }
+
+            .stat-label {
+                font-size: 0.65rem;
+            }
+
+            /* Month grid - 4 columns on tablet */
+            .month-grid {
+                grid-template-columns: repeat(4, 1fr);
+                gap: 6px;
+                padding: 12px;
+            }
+
+            .month-cell {
+                padding: 6px 4px;
+                font-size: 0.65rem;
+            }
+
+            /* Chart - make horizontal on mobile */
+            .chart-section {
+                padding: 16px;
+            }
+
+            .chart-container {
+                flex-direction: column;
+                height: auto;
+                gap: 12px;
+                padding: 8px 0;
+            }
+
+            .chart-bar {
+                width: 100%;
+                height: 30px !important;
+                min-height: 30px;
+                border-radius: 4px;
+                flex-direction: row;
+                background: linear-gradient(to right, #3498db, #9b59b6);
+            }
+
+            .chart-bar-label {
+                position: static;
+                width: 80px;
+                text-align: left;
+                font-size: 0.75rem;
+                padding-left: 8px;
+            }
+
+            .chart-bar-value {
+                position: static;
+                margin-left: auto;
+                padding-right: 8px;
+            }
+
+            /* Modal */
+            .modal-content {
+                padding: 16px;
+            }
+
+            .modal-title {
+                font-size: 1rem;
+                padding-right: 30px;
+            }
+
+            /* Prize pool */
+            .prize-pool-value {
+                font-size: 1.5rem;
+            }
+
+            .prize-distribution {
+                font-size: 0.7rem;
+                gap: 12px;
+            }
+
+            /* Header */
+            .header h1 {
+                font-size: 1.4rem;
+            }
+
+            .trophy {
+                font-size: 2rem;
+            }
+
+            /* Sections */
+            .section-title {
+                font-size: 0.8rem;
+            }
+
+            .history-section,
+            .legend-section,
+            .rules-section,
+            .pending-section {
+                padding: 12px;
+            }
+
+            /* Points */
+            .points-value {
+                font-size: 1.5rem;
+            }
+
+            /* Rules */
+            .rules-section h2 {
+                font-size: 1rem;
+            }
+
+            .rules-section h3 {
+                font-size: 0.85rem;
+            }
+
+            .rules-section p,
+            .rules-section ul,
+            .rules-section ol {
+                font-size: 0.75rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            /* Month grid - 3 columns on phone */
+            .month-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 4px;
+                padding: 8px;
+            }
+
+            .month-cell {
+                padding: 6px 2px;
+                font-size: 0.6rem;
+            }
+
+            /* Stats - even smaller */
+            .stat-card {
+                padding: 12px;
+            }
+
+            .stat-value {
+                font-size: 1.1rem;
+            }
+
+            .stat-label {
+                font-size: 0.6rem;
+            }
+
+            /* Legend - 2 columns on very small screens */
+            .legend-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            /* Countdown */
+            .countdown-value {
+                font-size: 1.2rem;
+            }
+
+            .countdown-section {
+                padding: 12px;
+            }
+
+            /* Chart labels smaller */
+            .chart-bar-label {
+                width: 60px;
+                font-size: 0.7rem;
+            }
+
+            .chart-bar-value {
+                font-size: 0.7rem;
+            }
+
+            /* Participant cards more compact */
+            .participant {
+                padding: 12px;
+            }
+
+            .participant-name {
+                font-size: 1rem;
+            }
+
+            .rank {
+                width: 28px;
+                height: 28px;
+                font-size: 0.8rem;
+            }
+        }
+
+        /* iOS Safari safe area support */
+        @supports (padding: max(0px)) {
+            body {
+                padding-left: max(16px, env(safe-area-inset-left));
+                padding-right: max(16px, env(safe-area-inset-right));
+                padding-bottom: max(16px, env(safe-area-inset-bottom));
+            }
+        }
     </style>
 </head>
 <body>
