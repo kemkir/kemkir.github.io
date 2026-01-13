@@ -572,56 +572,6 @@
             transform: scale(1.05);
         }
 
-        /* Progress chart */
-        .chart-section {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 24px;
-        }
-
-        .chart-title {
-            font-size: 0.85rem;
-            color: #8892b0;
-            margin-bottom: 16px;
-        }
-
-        .chart-container {
-            display: flex;
-            align-items: flex-end;
-            gap: 8px;
-            height: 150px;
-            padding: 16px 0;
-        }
-
-        .chart-bar {
-            flex: 1;
-            background: linear-gradient(to top, #3498db, #9b59b6);
-            border-radius: 4px 4px 0 0;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-end;
-            min-height: 20px;
-        }
-
-        .chart-bar-label {
-            position: absolute;
-            bottom: -24px;
-            font-size: 0.7rem;
-            color: #8892b0;
-            white-space: nowrap;
-        }
-
-        .chart-bar-value {
-            position: absolute;
-            top: -20px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            color: #3498db;
-        }
-
         /* Mobile optimizations */
         @media (max-width: 768px) {
             body {
@@ -670,41 +620,6 @@
             .month-cell {
                 padding: 6px 4px;
                 font-size: 0.65rem;
-            }
-
-            /* Chart - make horizontal on mobile */
-            .chart-section {
-                padding: 16px;
-            }
-
-            .chart-container {
-                flex-direction: column;
-                height: auto;
-                gap: 12px;
-                padding: 8px 0;
-            }
-
-            .chart-bar {
-                width: 100%;
-                height: 30px !important;
-                min-height: 30px;
-                border-radius: 4px;
-                flex-direction: row;
-                background: linear-gradient(to right, #3498db, #9b59b6);
-            }
-
-            .chart-bar-label {
-                position: static;
-                width: 80px;
-                text-align: left;
-                font-size: 0.75rem;
-                padding-left: 8px;
-            }
-
-            .chart-bar-value {
-                position: static;
-                margin-left: auto;
-                padding-right: 8px;
             }
 
             /* Modal */
@@ -809,16 +724,6 @@
                 padding: 12px;
             }
 
-            /* Chart labels smaller */
-            .chart-bar-label {
-                width: 60px;
-                font-size: 0.7rem;
-            }
-
-            .chart-bar-value {
-                font-size: 0.7rem;
-            }
-
             /* Participant cards more compact */
             .participant {
                 padding: 12px;
@@ -855,11 +760,11 @@
 
         <div class="stats-grid">
             <div class="stat-card">
-                <div class="stat-value">3</div>
+                <div class="stat-value">5</div>
                 <div class="stat-label">участников</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value">1</div>
+                <div class="stat-value">2</div>
                 <div class="stat-label">платных</div>
             </div>
             <div class="stat-card">
@@ -869,7 +774,7 @@
         </div>
 
         <div class="prize-pool">
-            <div class="prize-pool-value">500 ₽</div>
+            <div class="prize-pool-value">1000 ₽</div>
             <div class="prize-pool-label">призовой фонд • январь</div>
             <div class="prize-distribution">
                 <span class="prize-place">🥇 50%</span>
@@ -1021,7 +926,64 @@
                         </div>
                         <div class="progress-text">
                             <span>0%</span>
-                            <span>осталось 10 кг • без призовых</span>
+                            <span>осталось 10 кг</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="participant">
+                <div class="participant-header">
+                    <div class="rank rank-other">4</div>
+                    <div class="participant-name">
+                        Алина
+                        <span class="badge paid-badge">💰</span>
+                    </div>
+                    <div class="participant-points">
+                        <div class="points-value">0</div>
+                        <div class="points-label">баллов</div>
+                    </div>
+                </div>
+                <div class="goals-container">
+                    <div class="goal-row">
+                        <div class="goal-header">
+                            <span class="goal-type goal-main">основная</span>
+                            <span class="goal-category">А. Похудение</span>
+                        </div>
+                        <div class="goal-text">56.5 → 50 кг</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill progress-main" style="width: 0%"></div>
+                        </div>
+                        <div class="progress-text">
+                            <span>0%</span>
+                            <span>осталось 6.5 кг</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="participant">
+                <div class="participant-header">
+                    <div class="rank rank-other">5</div>
+                    <div class="participant-name">Роман</div>
+                    <div class="participant-points">
+                        <div class="points-value">0</div>
+                        <div class="points-label">баллов</div>
+                    </div>
+                </div>
+                <div class="goals-container">
+                    <div class="goal-row">
+                        <div class="goal-header">
+                            <span class="goal-type goal-main">основная</span>
+                            <span class="goal-category">А. Похудение</span>
+                        </div>
+                        <div class="goal-text">69.5 → 64 кг</div>
+                        <div class="progress-bar">
+                            <div class="progress-fill progress-main" style="width: 0%"></div>
+                        </div>
+                        <div class="progress-text">
+                            <span>0%</span>
+                            <span>осталось 5.5 кг</span>
                         </div>
                     </div>
                 </div>
@@ -1033,29 +995,9 @@
             <div class="pending-list">
                 <div class="pending-chip">Марина <span class="hint">Б3</span></div>
                 <div class="pending-chip">Elena <span class="hint">А</span></div>
-                <div class="pending-chip">Алина <span class="hint">А</span></div>
-                <div class="pending-chip">Роман <span class="hint">А</span></div>
                 <div class="pending-chip">Татьяна</div>
                 <div class="pending-chip">Настя</div>
                 <div class="pending-chip">Овсянка</div>
-            </div>
-        </div>
-
-        <div class="chart-section">
-            <div class="chart-title">📊 Прогресс участников (% от цели)</div>
-            <div class="chart-container">
-                <div class="chart-bar" style="height: 5%;">
-                    <div class="chart-bar-value">0%</div>
-                    <div class="chart-bar-label">Кирилл</div>
-                </div>
-                <div class="chart-bar" style="height: 5%;">
-                    <div class="chart-bar-value">0%</div>
-                    <div class="chart-bar-label">Кабачок</div>
-                </div>
-                <div class="chart-bar" style="height: 5%;">
-                    <div class="chart-bar-value">0%</div>
-                    <div class="chart-bar-label">Пикассо</div>
-                </div>
             </div>
         </div>
 
@@ -1114,8 +1056,12 @@
         <div class="history-section">
             <div class="history-title">📜 История обновлений</div>
             <div class="history-item">
+                <span class="history-date">13 января 2026</span>
+                Добавлены участники Алина (56.5→50 кг, платная) и Роман (69.5→64 кг, бесплатный)
+            </div>
+            <div class="history-item">
                 <span class="history-date">12 января 2026</span>
-                Добавлен участник Пикассо (90→80 кг, кат. А, без призовых)
+                Добавлен участник Пикассо (90→80 кг, бесплатный)
             </div>
             <div class="history-item">
                 <span class="history-date">12 января 2026</span>
@@ -1187,7 +1133,7 @@
         </div>
 
         <div class="footer">
-            Обновлено: 12 января 2026<br>
+            Обновлено: 13 января 2026<br>
             Регистрация до 31 января • Первый контроль: 28-31 января
         </div>
     </div>
