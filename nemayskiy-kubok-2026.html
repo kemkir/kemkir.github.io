@@ -310,6 +310,35 @@
             margin-top: 4px;
         }
 
+        .prize-pool-collected {
+            font-size: 0.85rem;
+            color: #8892b0;
+            margin-top: 8px;
+        }
+
+        .prize-pool-progress {
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 8px auto;
+            max-width: 300px;
+        }
+
+        .prize-pool-progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #27ae60, #2ecc71);
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .prize-pool-note {
+            font-size: 0.7rem;
+            color: #8892b0;
+            margin-top: 6px;
+            font-style: italic;
+        }
+
         .prize-distribution {
             display: flex;
             justify-content: center;
@@ -764,7 +793,7 @@
                 <div class="stat-label">участников</div>
             </div>
             <div class="stat-card">
-                <div class="stat-value">6</div>
+                <div class="stat-value">5</div>
                 <div class="stat-label">платных</div>
             </div>
             <div class="stat-card">
@@ -774,8 +803,13 @@
         </div>
 
         <div class="prize-pool">
-            <div class="prize-pool-value">3000 ₽</div>
+            <div class="prize-pool-value">2500 ₽</div>
             <div class="prize-pool-label">призовой фонд • январь</div>
+            <div class="prize-pool-collected">Собрано: 0 ₽ / 2500 ₽ (0%)</div>
+            <div class="prize-pool-progress">
+                <div class="prize-pool-progress-fill" style="width: 0%"></div>
+            </div>
+            <div class="prize-pool-note">+ потенциальный доход от накопительного счёта</div>
             <div class="prize-distribution">
                 <span class="prize-place">🥇 50%</span>
                 <span class="prize-place">🥈 30%</span>
@@ -794,6 +828,10 @@
                 <div class="legend-item">
                     <div class="legend-icon" style="background: linear-gradient(90deg, #27ae60, #2ecc71); font-size: 0.7rem;">💰</div>
                     <span>Платный участник</span>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-icon" style="background: rgba(255, 255, 255, 0.15); font-size: 0.7rem;">🎯</div>
+                    <span>Бесплатный участник</span>
                 </div>
                 <div class="legend-item">
                     <div class="legend-icon" style="background: rgba(52, 152, 219, 0.3); font-size: 0.65rem;">осн</div>
@@ -869,7 +907,7 @@
                     <div class="rank rank-2">2</div>
                     <div class="participant-name">
                         Кабачок
-                        <span class="badge paid-badge">💰</span>
+                        <span class="badge free-badge">🎯</span>
                     </div>
                     <div class="participant-points">
                         <div class="points-value">0</div>
@@ -1193,6 +1231,10 @@
         <div class="history-section">
             <div class="history-title">📜 История обновлений</div>
             <div class="history-item">
+                <span class="history-date">14 января 2026</span>
+                Кабачок перешёл в бесплатную лигу. Призовой фонд: 2500₽ (5 платных участников)
+            </div>
+            <div class="history-item">
                 <span class="history-date">13 января 2026</span>
                 Кабачок изменил дисциплины: Б3. Спорт (18→24 ч/мес) + В. Активность
             </div>
@@ -1286,7 +1328,7 @@
         </div>
 
         <div class="footer">
-            Обновлено: 13 января 2026<br>
+            Обновлено: 14 января 2026<br>
             Регистрация до 31 января • Первый контроль: 28-31 января
         </div>
     </div>
